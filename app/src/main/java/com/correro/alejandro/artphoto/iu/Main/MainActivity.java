@@ -26,6 +26,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaccion = getSupportFragmentManager().beginTransaction();
         transaccion.replace(R.id.huec222o, new ItemFragment());
         transaccion.commit();
-        
+
     }
 }
