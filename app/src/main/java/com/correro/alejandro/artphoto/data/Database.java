@@ -39,17 +39,6 @@ public class Database {
         artists.set(position, artist);
     }
 
-    public void deleteUser(int position) {
-        artists.remove(position);
-    }
-
-    public void insertUser(Artist artist, int position) {
-        artists.add(position, artist);
-    }
-
-    public void deleteUser(Artist artist) {
-        artists.remove(artist);
-    }
 
     public int getUserPosition(Artist artist){
         return artists.indexOf(artist);
