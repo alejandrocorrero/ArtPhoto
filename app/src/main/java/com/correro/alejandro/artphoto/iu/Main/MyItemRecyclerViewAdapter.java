@@ -8,30 +8,29 @@ import android.widget.TextView;
 
 import com.correro.alejandro.artphoto.R;
 import com.correro.alejandro.artphoto.data.model.Artist;
-import com.correro.alejandro.artphoto.iu.Main.ItemFragment.OnListFragmentInteractionListener;
-import com.correro.alejandro.artphoto.iu.Main.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
 
     private final List<Artist> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final callback mListener;
+    private View viewReplace;
 
-    public MyItemRecyclerViewAdapter(List<Artist> items, OnListFragmentInteractionListener listener) {
+    public interface callback {
+        void changeImage(Artist item);
+    }
+
+    public MyItemRecyclerViewAdapter(List<Artist> items, callback listener) {
         mValues = items;
         mListener = listener;
     }
 
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -40,15 +39,18 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).getName());
         holder.mContentView.setText(mValues.get(position).getArtist());
+        if (position == 0) {
+            holder.mView.setBackgroundColor(holder.mView.getContext().getResources().getColor(R.color.colorPrimary));
+            viewReplace = holder.mView;
+            mListener.changeImage(holder.mItem);
+        }
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
+        holder.mView.setOnClickListener(v -> {
+            if (null != mListener) {
+                viewReplace.setBackgroundColor(v.getContext().getResources().getColor(R.color.color_listview_background));
+                v.setBackgroundColor(v.getContext().getResources().getColor(R.color.colorPrimary));
+                viewReplace = v;
+                mListener.changeImage(holder.mItem);
             }
         });
     }
@@ -71,9 +73,5 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             mContentView = (TextView) view.findViewById(R.id.content);
         }
 
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
-        }
     }
 }

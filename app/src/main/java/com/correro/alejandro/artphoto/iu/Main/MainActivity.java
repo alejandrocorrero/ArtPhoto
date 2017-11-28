@@ -13,8 +13,6 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.imageView)
-    ImageView imageView;
     @BindView(R.id.huec222o)
     FrameLayout huec222o;
 

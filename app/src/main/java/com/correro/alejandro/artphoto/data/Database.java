@@ -17,7 +17,8 @@ public class Database {
 
 
        artists.add(new Artist("La luz del mundo","Simon Funk","2017",R.drawable.ic_launcher_background));
-       ;
+        artists.add(new Artist("La luz del mundo2","Simon Funk","2017",R.drawable.ic_launcher_background));
+        artists.add(new Artist("La luz del mundo3","Simon Funk","2017",R.drawable.ic_launcher_background));
     }
 
     public static synchronized Database getInstance() {
