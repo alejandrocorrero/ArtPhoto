@@ -16,9 +16,14 @@ public class Database {
         artists = new ArrayList<Artist>();
 
 
-       artists.add(new Artist("La luz del mundo","Simon Funk","2017",R.drawable.ic_launcher_background));
-        artists.add(new Artist("La luz del mundo2","Simon Funk","2017",R.drawable.ic_launcher_background));
-        artists.add(new Artist("La luz del mundo3","Simon Funk","2017",R.drawable.ic_launcher_background));
+        artists.add(new Artist("Resacon en las vegas", "Jack Napier", "2015", R.drawable.cat1));
+        artists.add(new Artist("Navidad", "Familia", "2017", R.drawable.cat2));
+        artists.add(new Artist("Black mirror", "Simon Funk", "2015", R.drawable.cat3));
+        artists.add(new Artist("Puente de diciembre", "Alejandro", "2017", R.drawable.cat4));
+        artists.add(new Artist("Madrugadas", "Alejandro", "2000", R.drawable.cat5));
+        artists.add(new Artist("Practicas android", "Pedro", "2017", R.drawable.cat6));
+        artists.add(new Artist("Examen android", "Pedro", "2017", R.drawable.cat7));
+
     }
 
     public static synchronized Database getInstance() {
@@ -41,7 +46,7 @@ public class Database {
     }
 
 
-    public int getUserPosition(Artist artist){
+    public int getUserPosition(Artist artist) {
         return artists.indexOf(artist);
     }
 }

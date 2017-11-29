@@ -1,6 +1,7 @@
 package com.correro.alejandro.artphoto.iu.Main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -9,15 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.correro.alejandro.artphoto.R;
 import com.correro.alejandro.artphoto.data.Database;
 import com.correro.alejandro.artphoto.data.model.Artist;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.correro.alejandro.artphoto.iu.Detail.DetailActivity;
 
 public class ItemFragment extends Fragment implements MyItemRecyclerViewAdapter.callback {
 
@@ -33,10 +31,10 @@ public class ItemFragment extends Fragment implements MyItemRecyclerViewAdapter.
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_activity_main, container, false);
         Context context = view.getContext();
-        RecyclerView recyclerView = view.findViewById(R.id.list);
-        imageView =view.findViewById(R.id.imageView);
+        RecyclerView recyclerView = view.findViewById(R.id.rvArtList);
+        imageView =view.findViewById(R.id.ivArt);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration( new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(new MyItemRecyclerViewAdapter(database.getArtists(), this));
@@ -47,5 +45,13 @@ public class ItemFragment extends Fragment implements MyItemRecyclerViewAdapter.
     @Override
     public void changeImage(Artist item) {
         imageView.setImageResource(item.getAvatar());
+
+    }
+
+    @Override
+    public void startActivity(Artist item) {
+        Intent intent = new Intent(getContext() ,DetailActivity.class);
+        intent.putExtra("artist", item);
+        startActivity(intent);
     }
 }

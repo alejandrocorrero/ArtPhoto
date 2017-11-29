@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="default_margin">8dp</dimen>
+    <dimen name="fragment_activity_main_item">3dp</dimen>
+    <dimen name="fragment_activity_main_lvArt_height">150dp</dimen>
 </resources>

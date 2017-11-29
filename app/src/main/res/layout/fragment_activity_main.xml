@@ -9,11 +9,10 @@
     tools:layout_editor_absoluteY="81dp">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ivArt"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/fragment_activity_main_lvArt_height"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,16 +20,14 @@
         app:srcCompat="@mipmap/ic_launcher" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/list"
-        android:layout_width="200dp"
-        android:layout_height="250dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/rvArtList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@id/ivArt"
         tools:context="com.correro.alejandro.artphoto.iu.Main.ItemFragment"
-        tools:listitem="@layout/fragment_item" />
+        tools:listitem="@layout/fragment_activity_main_item" />
 </android.support.constraint.ConstraintLayout>

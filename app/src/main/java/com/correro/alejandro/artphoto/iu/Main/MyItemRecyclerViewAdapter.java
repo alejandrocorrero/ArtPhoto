@@ -20,6 +20,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
 
     public interface callback {
         void changeImage(Artist item);
+        void startActivity(Artist item);
     }
 
     public MyItemRecyclerViewAdapter(List<Artist> items, callback listener) {
@@ -30,7 +31,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_activity_main_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -38,6 +39,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).getName());
+        holder.yearView.setText(mValues.get(position).getYear());
         holder.mContentView.setText(mValues.get(position).getArtist());
         if (position == 0) {
             holder.mView.setBackgroundColor(holder.mView.getContext().getResources().getColor(R.color.colorPrimary));
@@ -51,6 +53,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
                 v.setBackgroundColor(v.getContext().getResources().getColor(R.color.colorPrimary));
                 viewReplace = v;
                 mListener.changeImage(holder.mItem);
+                mListener.startActivity(holder.mItem);
             }
         });
     }
@@ -64,13 +67,15 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
+        public final TextView yearView;
         public Artist mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            yearView=view.findViewById(R.id.lblYear);
+            mIdView = (TextView) view.findViewById(R.id.lblArtName);
+            mContentView = (TextView) view.findViewById(R.id.lblAuthor);
         }
 
     }

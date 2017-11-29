@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="color_listview_background">#ffffff</color>
+    <color name="color_activity_main_fragment_item_year">#541e1e</color>
 </resources>

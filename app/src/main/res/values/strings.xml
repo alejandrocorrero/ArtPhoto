@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ArtPhoto</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_activity_main_lvArt_dimension">w,3:1</string>
 </resources>
