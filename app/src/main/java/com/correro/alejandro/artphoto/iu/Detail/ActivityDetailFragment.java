@@ -1,5 +1,6 @@
 package com.correro.alejandro.artphoto.iu.Detail;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,10 +11,14 @@ import android.widget.TextView;
 
 import com.correro.alejandro.artphoto.R;
 import com.correro.alejandro.artphoto.data.model.Artist;
+import com.correro.alejandro.artphoto.iu.Main.MyItemRecyclerViewAdapter;
 
-public class ActivityDetailFragment extends Fragment {
+public class ActivityDetailFragment extends Fragment  {
 
     Artist artist = null;
+    ImageView ivAvatar;
+    TextView lblName;
+    TextView lblAuthor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,9 +30,9 @@ public class ActivityDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_activity_detail, container, false);
-        ImageView ivAvatar = view.findViewById(R.id.ivAvatarDetail);
-        TextView lblName = view.findViewById(R.id.lblNameDetail);
-        TextView lblAuthor = view.findViewById(R.id.lblAuthorDetail);
+        ivAvatar = view.findViewById(R.id.ivAvatarDetail);
+        lblName = view.findViewById(R.id.lblNameDetail);
+        lblAuthor = view.findViewById(R.id.lblAuthorDetail);
 
         if (artist != null) {
             ivAvatar.setImageResource(artist.getAvatar());
@@ -44,5 +49,6 @@ public class ActivityDetailFragment extends Fragment {
         frg.setArguments(arguments);
         return frg;
     }
+
 
 }

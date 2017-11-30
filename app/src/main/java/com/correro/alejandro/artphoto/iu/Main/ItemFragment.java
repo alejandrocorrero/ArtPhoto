@@ -2,6 +2,7 @@ package com.correro.alejandro.artphoto.iu.Main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -24,6 +25,7 @@ public class ItemFragment extends Fragment implements MyItemRecyclerViewAdapter.
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setRetainInstance(true);
         super.onCreate(savedInstanceState);
         database = Database.getInstance();
 
@@ -34,9 +36,9 @@ public class ItemFragment extends Fragment implements MyItemRecyclerViewAdapter.
         View view = inflater.inflate(R.layout.fragment_activity_main, container, false);
         Context context = view.getContext();
         RecyclerView recyclerView = view.findViewById(R.id.rvArtList);
-        imageView =view.findViewById(R.id.ivArt);
+        imageView = view.findViewById(R.id.ivArt);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration( new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(new MyItemRecyclerViewAdapter(database.getArtists(), this));
         return view;
     }
@@ -50,8 +52,10 @@ public class ItemFragment extends Fragment implements MyItemRecyclerViewAdapter.
 
     @Override
     public void startActivity(Artist item) {
-        Intent intent = new Intent(getContext() ,DetailActivity.class);
-        intent.putExtra("artist", item);
-        startActivity(intent);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Intent intent = new Intent(getContext(), DetailActivity.class);
+            intent.putExtra("artist", item);
+            startActivity(intent);
+        }
     }
 }
