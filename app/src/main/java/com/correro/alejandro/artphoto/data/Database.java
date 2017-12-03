@@ -37,16 +37,10 @@ public class Database {
         return artists;
     }
 
-    public void addUser(Artist artist) {
-        artists.add(artist);
-    }
-
-    public void updateUser(Artist artist, int position) {
-        artists.set(position, artist);
-    }
-
-
-    public int getUserPosition(Artist artist) {
+    public int getArtistPosition(Artist artist) {
         return artists.indexOf(artist);
+    }
+    public Artist getArtistWithPosition(int position){
+        return artists.get(position);
     }
 }

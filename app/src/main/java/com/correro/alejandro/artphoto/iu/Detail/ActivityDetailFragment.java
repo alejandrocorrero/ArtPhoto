@@ -1,6 +1,5 @@
 package com.correro.alejandro.artphoto.iu.Detail;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,9 +10,8 @@ import android.widget.TextView;
 
 import com.correro.alejandro.artphoto.R;
 import com.correro.alejandro.artphoto.data.model.Artist;
-import com.correro.alejandro.artphoto.iu.Main.MyItemRecyclerViewAdapter;
 
-public class ActivityDetailFragment extends Fragment  {
+public class ActivityDetailFragment extends Fragment {
 
     Artist artist = null;
     ImageView ivAvatar;
@@ -23,8 +21,14 @@ public class ActivityDetailFragment extends Fragment  {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle = getArguments();
-        artist = bundle.getParcelable("artist");
+        getArgumentsValues();
+    }
+
+    private void getArgumentsValues() {
+        if (getArguments() != null) {
+            Bundle bundle = getArguments();
+            artist = bundle.getParcelable("artist");
+        }
     }
 
     @Override

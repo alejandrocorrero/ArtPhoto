@@ -5,10 +5,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
-import android.widget.Toast;
-
 import com.correro.alejandro.artphoto.R;
 import com.correro.alejandro.artphoto.data.model.Artist;
+import com.correro.alejandro.artphoto.data.utils.FragmentUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,25 +23,25 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
-        Intent intent = getIntent();
-        artist=intent.getParcelableExtra("artist");
-        //obtainData();
+        getIntentValues();
+        loadFragment();
+    }
+
+    private void loadFragment() {
         ActivityDetailFragment frgDetail = ActivityDetailFragment.newInstance(artist);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.detailFrame, frgDetail);
         transaction.commit();
     }
 
-    private void obtainData() {
+    private void getIntentValues() {
         Intent intent = getIntent();
-        if (intent != null) {
-            Bundle extras = intent.getExtras();
-            if (extras != null) {
-                if (intent.hasExtra("artist")) {
-                    artist=extras.getParcelable("artist");
+        artist=intent.getParcelableExtra("artist");
+    }
 
-                }
-            }
-        }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@mipmap/ic_launcher" />
+        />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvArtList"
@@ -42,6 +42,6 @@
         android:background="@color/color_listview_background"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         app:layout_constraintVertical_bias="1.0"
-        tools:context="com.correro.alejandro.artphoto.iu.Main.ItemFragment"
+        tools:context="com.correro.alejandro.artphoto.iu.Main.MainFragment"
         tools:listitem="@layout/fragment_activity_main_item" />
 </android.support.constraint.ConstraintLayout>
